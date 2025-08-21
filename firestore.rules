@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // السماح للجميع (السائقين والمديرين) بكل شيء على جميع الصفحات والمجموعات
+    match /{document=**} {
+      allow read, write, update, delete, create: if true;
+    }
+  }
+}
